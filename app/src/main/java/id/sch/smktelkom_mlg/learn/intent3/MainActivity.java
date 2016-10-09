@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.imageViewPhone).setOnClickListener(new View.OnClickListener()
+        findViewById(R.id.imageViewPhone)
+                .setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v){
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         }
         );
 
-        findViewById(R.id.imageViewSMS).setOnClickListener(new View.OnClickListener()
+        findViewById(R.id.imageViewSMS)
+                .setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v){
@@ -31,8 +33,25 @@ public class MainActivity extends AppCompatActivity {
         }
         );
 
+        findViewById(R.id.imageViewBrowser)
+                .setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+                openWebPage("http://www.smktelkom-mlg.sch.id/");
+            }
+        }
+        );
 
 
+
+    }
+
+    private void openWebPage(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null)
+            startActivity(intent);
     }
 
     private void composeSmsMessage(String message) {
